@@ -4,7 +4,7 @@ import random
 import math
 
 try:
-    N = int(sys.argv[1])
+    N = int(sys.argv[1])    
     L = float(sys.argv[2]) 
 except:
     print('Use: estimate_pi.py N L seed')
@@ -25,11 +25,9 @@ elif L==0 or L<0:
     
 def drop_needle(L):
         if SeedActivated==True:
-            x0 = random.seed(seed)
-            a = random.seed(seed)*2*math.pi
-        else:
-            x0 = random.random()
-            a = random.vonmisesvariate(0,0)
+            random.seed(seed)
+        x0 = random.random()
+        a = random.vonmisesvariate(0,0)
         x1 = x0 + L*math.cos(a)
         if x1>0:
             if x1<1:
@@ -38,7 +36,7 @@ def drop_needle(L):
     
 numberOfHits = 0     
 for i in range(1,N):
-    if drop_needle(L)==True:
+    if drop_needle(L):
         numberOfHits = numberOfHits+1
             
     

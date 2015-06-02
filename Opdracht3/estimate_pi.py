@@ -24,8 +24,6 @@ elif L==0 or L<0:
     sys.exit()
     
 def drop_needle(L):
-        if SeedActivated==True:
-            random.seed(seed)
         x0 = random.random()
         a = random.vonmisesvariate(0,0)
         x1 = x0 + L*math.cos(a)
@@ -35,6 +33,8 @@ def drop_needle(L):
         return True
     
 numberOfHits = 0     
+if SeedActivated==True:
+        random.seed(seed)
 for i in range(1,N):
     if drop_needle(L):
         numberOfHits = numberOfHits+1
